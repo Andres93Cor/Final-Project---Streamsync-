@@ -24,7 +24,10 @@
             "isCodeManaged": false,
             "position": 0,
             "parentId": "root",
-            "handlers": {},
+            "handlers": {
+                "ss-keydown": "update_Analisis_Bivariado",
+                "ss-page-open": "update_Analisis_Bivariado"
+            },
             "visible": true
         },
         "bebc5fe9-63a7-46a7-b0fa-62303555cfaf": {
@@ -89,21 +92,8 @@
             "type": "horizontalstack",
             "content": {},
             "isCodeManaged": false,
-            "position": 2,
+            "position": 1,
             "parentId": "z61wecxdfohlu6yu",
-            "handlers": {},
-            "visible": true
-        },
-        "zvtmqb1k1n0kzg32": {
-            "id": "zvtmqb1k1n0kzg32",
-            "type": "metric",
-            "content": {
-                "note": "+Pass",
-                "name": "Valor M\u00ednimo"
-            },
-            "isCodeManaged": false,
-            "position": 0,
-            "parentId": "3ql2ddclf2njxon6",
             "handlers": {},
             "visible": true
         },
@@ -112,10 +102,11 @@
             "type": "metric",
             "content": {
                 "note": "+Pass",
-                "name": "Valor Maximo"
+                "name": "Valor Maximo",
+                "metricValue": "@{max}"
             },
             "isCodeManaged": false,
-            "position": 1,
+            "position": 2,
             "parentId": "3ql2ddclf2njxon6",
             "handlers": {},
             "visible": true
@@ -125,10 +116,11 @@
             "type": "metric",
             "content": {
                 "note": "+Pass",
-                "name": "Media"
+                "name": "Media",
+                "metricValue": "@{Mean}"
             },
             "isCodeManaged": false,
-            "position": 2,
+            "position": 1,
             "parentId": "3ql2ddclf2njxon6",
             "handlers": {},
             "visible": true
@@ -138,34 +130,11 @@
             "type": "metric",
             "content": {
                 "note": "+Pass",
-                "name": "Desviaci\u00f3n"
+                "name": "Desviaci\u00f3n",
+                "metricValue": "@{std}"
             },
             "isCodeManaged": false,
-            "position": 3,
-            "parentId": "3ql2ddclf2njxon6",
-            "handlers": {},
-            "visible": true
-        },
-        "tpuk5lrpg6g1bb1y": {
-            "id": "tpuk5lrpg6g1bb1y",
-            "type": "metric",
-            "content": {
-                "note": "+Pass"
-            },
-            "isCodeManaged": false,
-            "position": 4,
-            "parentId": "3ql2ddclf2njxon6",
-            "handlers": {},
-            "visible": true
-        },
-        "okmxf6jwfoalvaop": {
-            "id": "okmxf6jwfoalvaop",
-            "type": "metric",
-            "content": {
-                "note": "+Pass"
-            },
-            "isCodeManaged": false,
-            "position": 5,
+            "position": 0,
             "parentId": "3ql2ddclf2njxon6",
             "handlers": {},
             "visible": true
@@ -173,9 +142,11 @@
         "6zmpn1iu2glr48f4": {
             "id": "6zmpn1iu2glr48f4",
             "type": "plotlygraph",
-            "content": {},
+            "content": {
+                "spec": "@{grafico}"
+            },
             "isCodeManaged": false,
-            "position": 1,
+            "position": 2,
             "parentId": "z61wecxdfohlu6yu",
             "handlers": {},
             "visible": true
@@ -185,13 +156,19 @@
             "type": "dropdowninput",
             "content": {
                 "label": "Input Label",
-                "options": "@{columnas}"
+                "options": "{\n  \"Cumulative_solar_power\": \"Cumulative_solar_power\",\n  \"kWh electricity/day\": \"kWh electricity/day\",\n  \"Gas/day\": \"Gas/day\"\n}"
             },
             "isCodeManaged": false,
             "position": 0,
             "parentId": "z61wecxdfohlu6yu",
-            "handlers": {},
-            "visible": true
+            "handlers": {
+                "ss-option-change": "update"
+            },
+            "visible": true,
+            "binding": {
+                "eventType": "ss-option-change",
+                "stateRef": "vari"
+            }
         },
         "9f401rpeme3gb67x": {
             "id": "9f401rpeme3gb67x",
@@ -231,13 +208,20 @@
             "id": "gzsmyxg7h8eyeqnj",
             "type": "dropdowninput",
             "content": {
-                "label": "Input Label"
+                "label": "Input Label",
+                "options": "{\n  \"Cumulative_solar_power\": \"Cumulative_solar_power\",\n  \"kWh electricity/day\": \"kWh electricity/day\",\n  \"Gas/day\": \"Gas/day\"\n}"
             },
             "isCodeManaged": false,
             "position": 0,
             "parentId": "2hl3mnleprk1qw0k",
-            "handlers": {},
-            "visible": true
+            "handlers": {
+                "ss-option-change": "update_Analisis_Bivariado"
+            },
+            "visible": true,
+            "binding": {
+                "eventType": "ss-option-change",
+                "stateRef": "rowCorr"
+            }
         },
         "x0nwjaled7yil6re": {
             "id": "x0nwjaled7yil6re",
@@ -255,13 +239,20 @@
             "id": "jgmqkq1i6ojuvrpd",
             "type": "dropdowninput",
             "content": {
-                "label": "Input Label"
+                "label": "Input Label",
+                "options": "{\n  \"Cumulative_solar_power\": \"Cumulative_solar_power\",\n  \"kWh electricity/day\": \"kWh electricity/day\",\n  \"Gas/day\": \"Gas/day\"\n}"
             },
             "isCodeManaged": false,
             "position": 0,
             "parentId": "x0nwjaled7yil6re",
-            "handlers": {},
-            "visible": true
+            "handlers": {
+                "ss-option-change": "update_Analisis_Bivariado"
+            },
+            "visible": true,
+            "binding": {
+                "eventType": "ss-option-change",
+                "stateRef": "colCorr"
+            }
         },
         "szg4u5ker3ckkmcq": {
             "id": "szg4u5ker3ckkmcq",
@@ -294,7 +285,9 @@
             "isCodeManaged": false,
             "position": 0,
             "parentId": "jm20fbxtwrc9kbos",
-            "handlers": {},
+            "handlers": {
+                "ss-date-change": "update_Analisis_Bivariado"
+            },
             "visible": true,
             "binding": {
                 "eventType": "ss-date-change",
@@ -322,7 +315,9 @@
             "isCodeManaged": false,
             "position": 0,
             "parentId": "m2bjr6762sh1zq3v",
-            "handlers": {},
+            "handlers": {
+                "ss-date-change": "update_Analisis_Bivariado"
+            },
             "visible": true,
             "binding": {
                 "eventType": "ss-date-change",
@@ -344,7 +339,8 @@
             "type": "metric",
             "content": {
                 "name": "Correlaci\u00f3n entre Variables",
-                "note": "+Pass"
+                "note": "+Pass",
+                "metricValue": "@{corrVariables}"
             },
             "isCodeManaged": false,
             "position": 0,
@@ -367,45 +363,143 @@
         "iunuq1ihsks5ycca": {
             "id": "iunuq1ihsks5ycca",
             "type": "plotlygraph",
-            "content": {},
+            "content": {
+                "spec": "@{scatter}"
+            },
             "isCodeManaged": false,
             "position": 3,
             "parentId": "9f401rpeme3gb67x",
-            "handlers": {},
+            "handlers": {
+                "plotly-click": "update_Analisis_Bivariado"
+            },
             "visible": true
         },
         "dquti3pm17tbi5gh": {
             "id": "dquti3pm17tbi5gh",
             "type": "plotlygraph",
-            "content": {},
+            "content": {
+                "spec": "@{HeatMap}"
+            },
             "isCodeManaged": false,
             "position": 4,
             "parentId": "9f401rpeme3gb67x",
-            "handlers": {},
+            "handlers": {
+                "plotly-click": "update_Analisis_Bivariado"
+            },
             "visible": true
         },
         "qoevco2801odv8zj": {
             "id": "qoevco2801odv8zj",
             "type": "plotlygraph",
-            "content": {},
+            "content": {
+                "spec": "@{graficoBox}"
+            },
             "isCodeManaged": false,
-            "position": 1,
+            "position": 4,
             "parentId": "w02knci7593z2j42",
-            "handlers": {},
+            "handlers": {
+                "plotly-click": "update_Analisis_Mensual"
+            },
             "visible": true
         },
         "tyvtkd9i519taphx": {
             "id": "tyvtkd9i519taphx",
             "type": "dropdowninput",
             "content": {
-                "label": "Input Label",
-                "options": ""
+                "label": "Variable",
+                "options": "{\n  \"Cumulative_solar_power\": \"Cumulative_solar_power\",\n  \"kWh electricity/day\": \"kWh electricity/day\",\n  \"Gas/day\": \"Gas/day\"\n}"
             },
             "isCodeManaged": false,
             "position": 0,
             "parentId": "w02knci7593z2j42",
+            "handlers": {
+                "ss-option-change": "update_Analisis_Mensual"
+            },
+            "visible": true,
+            "binding": {
+                "eventType": "ss-option-change",
+                "stateRef": "DropVariable"
+            }
+        },
+        "6fjqz6il4bvasggw": {
+            "id": "6fjqz6il4bvasggw",
+            "type": "plotlygraph",
+            "content": {
+                "spec": "@{histograma}"
+            },
+            "isCodeManaged": false,
+            "position": 3,
+            "parentId": "z61wecxdfohlu6yu",
             "handlers": {},
             "visible": true
+        },
+        "zvtmqb1k1n0kzg32": {
+            "id": "zvtmqb1k1n0kzg32",
+            "type": "metric",
+            "content": {
+                "note": "+Pass",
+                "name": "Valor M\u00ednimo",
+                "metricValue": "@{min}"
+            },
+            "isCodeManaged": false,
+            "position": 3,
+            "parentId": "3ql2ddclf2njxon6",
+            "visible": true
+        },
+        "wbiqzgymvh5pelot": {
+            "id": "wbiqzgymvh5pelot",
+            "type": "dropdowninput",
+            "content": {
+                "label": "Mes",
+                "options": "{\n  \"1\": \"Enero\",\n  \"2\": \"Febrero\",\n  \"3\": \"Marzo\",\n  \"4\": \"Abril\",\n  \"5\": \"Mayo\",\n  \"6\": \"Junio\",\n  \"7\": \"Julio\",\n  \"8\": \"Agosto\",\n  \"9\": \"Septiembre\",\n  \"10\": \"Octubre\",\n  \"11\": \"Noviembre\",\n  \"12\": \"Diciembre\"\n}"
+            },
+            "isCodeManaged": false,
+            "position": 1,
+            "parentId": "w02knci7593z2j42",
+            "handlers": {
+                "ss-option-change": "update_Analisis_Mensual"
+            },
+            "visible": true,
+            "binding": {
+                "eventType": "ss-option-change",
+                "stateRef": "DropMensual"
+            }
+        },
+        "kogct668ys392y82": {
+            "id": "kogct668ys392y82",
+            "type": "dateinput",
+            "content": {
+                "label": "Fecha final"
+            },
+            "isCodeManaged": false,
+            "position": 3,
+            "parentId": "w02knci7593z2j42",
+            "handlers": {
+                "ss-date-change": "update_Analisis_Mensual"
+            },
+            "visible": true,
+            "binding": {
+                "eventType": "ss-date-change",
+                "stateRef": "fecha_fin"
+            }
+        },
+        "84s91l4nax5r1tw8": {
+            "id": "84s91l4nax5r1tw8",
+            "type": "dateinput",
+            "content": {
+                "label": "Fecha inicial"
+            },
+            "isCodeManaged": false,
+            "position": 2,
+            "parentId": "w02knci7593z2j42",
+            "handlers": {
+                "ss-date-change": "update_Analisis_Mensual"
+            },
+            "visible": true,
+            "binding": {
+                "eventType": "ss-date-change",
+                "stateRef": "fecha_ini"
+            }
         }
     }
 }
